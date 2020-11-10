@@ -7,11 +7,12 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-up/sign-in-up.component';
 import CheckoutPage from './components/checkout/checkout.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument} from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selector';
 import { createStructuredSelector } from 'reselect';
 //import { createStore } from 'redux';
+
 
 class App extends React.Component {
  
@@ -33,6 +34,7 @@ class App extends React.Component {
         });
       }
       setCurrentUser(userAuth);
+      
     });
   }
 
@@ -70,6 +72,7 @@ const mapStateToProps = createStructuredSelector({
 
 const  mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
+  
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
