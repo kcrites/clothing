@@ -1,10 +1,12 @@
 import React from 'react';
 import CollectionItem from '../collection-item/collection-item.component';
+import { withRouter } from 'react-router-dom';
 import './collection-preview.styles.scss';
 
-const CollectionPreview = ({ title, items }) => (
+const CollectionPreview = ({ title, items, routeName, history, match }) => (
     <div className='collection-preview'>
-        <h1 className='title' >{title.toUpperCase()}</h1>
+        <h1 className='title' onClick={() => history.push(`${match.path}/${routeName}`)}>
+            {title.toUpperCase()}</h1>
         <div className='preview'>
             {
                 items
@@ -16,4 +18,4 @@ const CollectionPreview = ({ title, items }) => (
     </div>
 );
 //brings in the first 4 items from the collection - could cause a performance issue if rerendered often
-export default CollectionPreview;
+export default withRouter(CollectionPreview);
